@@ -32,4 +32,4 @@ print(f"------ {end_time - start_time} seconds -------")
 # Save the final file as a physical file
 file.drop(columns = ['normalized_name', 'normalized_country', 'normalized_country_code'])
 file.drop(columns = ['normalized_region', 'normalized_website', 'normalized_locations'])
-file.to_parquet('veridion_deduplicated.parquet', index = False)
+file.to_parquet('data/veridion_deduplicated.parquet', index = False)
