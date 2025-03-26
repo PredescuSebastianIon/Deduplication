@@ -21,3 +21,10 @@ This project demonstrates:
 
     ```bash
     pip install -r requirements.txt
+
+
+## Usage
+
+Run the deduplication pipeline
+    ```bash
+    python main.py
