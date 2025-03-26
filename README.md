@@ -1,4 +1,4 @@
-### Database Deduplication
+# Database Deduplication
 
 This project implements a deduplication for some company data.<br>
 The main goal was to identify what datas are doubled in the records using fuzzy matching techniques.
