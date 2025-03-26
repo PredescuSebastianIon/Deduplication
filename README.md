@@ -27,5 +27,4 @@ This project demonstrates:
 
 - Run the deduplication pipeline:
 
-        ```bash
         python main.py
