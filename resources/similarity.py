@@ -24,7 +24,7 @@ def compare_2_rows(block, i, j, relevant_columns):
 def similarity_function(file):
 
     # relevant_columns = ['normalized_name', 'website_url', 'main_region', 'main_country_code']
-    relevant_columns = ['normalized_name', 'normalized_region', 'normalized_country_code', 'normalized_locations']
+    relevant_columns = ['normalized_name', 'normalized_region', 'normalized_country_code']
 
     file = file.reset_index(drop=True)
     # file['name_initial'] = file['normalized_name'].str[0]
