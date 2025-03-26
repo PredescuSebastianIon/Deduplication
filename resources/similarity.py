@@ -22,12 +22,8 @@ def compare_2_rows(block, i, j, relevant_columns):
     return score
 
 def similarity_function(file):
-
-    # relevant_columns = ['normalized_name', 'website_url', 'main_region', 'main_country_code']
     relevant_columns = ['normalized_name', 'normalized_region', 'normalized_country_code']
-
-    file = file.reset_index(drop=True)
-    # file['name_initial'] = file['normalized_name'].str[0]
+    file = file.reset_index(drop = True)
     groups = {}
     group_id = 0
     file['index'] = file.index  # Preserve original index
@@ -44,26 +40,16 @@ def similarity_function(file):
 
             members = [i]
             for j in range(i + 1, len(block)):
+                # check if already is assigned in a group
                 if j in local_marked:
                     continue
 
                 score = compare_2_rows(block, i, j, relevant_columns)
-
-                # name_i = block.loc[i, 'normalized_name']
-                # region_i = block.loc[i, 'main_region']
-                
-                # name_j = block.loc[j, 'normalized_name']
-                # region_j = block.loc[j, 'main_region']
-
-                # score_name = fuzz.token_sort_ratio(name_i, name_j)
-                # score_region = fuzz.token_sort_ratio(region_i, region_i)
-
-                # score = (score_name + score_region) / 2
-
                 if score > 90:
                     members.append(j)
                     local_marked.add(j)
 
+            # assign the group_id for every member
             for m in members:
                 original_index = block.loc[m, 'index']
                 groups[original_index] = group_id
@@ -71,6 +57,6 @@ def similarity_function(file):
             group_id += 1
 
     file['group_id'] = file['index'].map(groups)
-    # file.drop(columns=['name_initial', 'index'], inplace=True)
+    file.drop(columns = ['index'], inplace = True)
     file = file.drop_duplicates(subset=['group_id'])
     return file

@@ -1,14 +1,13 @@
 import pandas as pd
 import re, time, sys
-from resources.normalize import normalize, just_lower_case
+from resources.normalize import normalize
 from resources.similarity import similarity_function
 from resources.most_complited_columns import percentage
-
 
 # Start the program
 start_time = time.time()
 # Read the file
-file = pd.read_parquet('data/veridion_entity_resolution_challenge.snappy.parquet', engine='pyarrow')
+file = pd.read_parquet('data/veridion_entity_resolution_challenge.snappy.parquet', engine = 'pyarrow')
 
 # Let's normalized the company_name and main_country
 file['normalized_name'] = file['company_name'].apply(normalize)
@@ -29,5 +28,8 @@ print("After deduplication deduplication:", file.shape[0])
 end_time = time.time()
 print(f"------ {end_time - start_time} seconds -------")
 
+
 # Save the final file as a physical file
-# file.to_parquet('veridion_deduplicated(5).parquet', index=False)
+file.drop(columns = ['normalized_name', 'normalized_country', 'normalized_country_code'])
+file.drop(columns = ['normalized_region', 'normalized_website', 'normalized_locations'])
+file.to_parquet('veridion_deduplicated.parquet', index = False)

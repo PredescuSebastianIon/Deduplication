@@ -1,7 +1,6 @@
 import pandas as pd
 import re
 
-
 def just_lower_case(string):
     if pd.isna(string):
         return pd.NA
