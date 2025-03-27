@@ -11,7 +11,7 @@ This project demonstrates:
 - Fuzzy Deduplication:
     Uses fuzzy matching (via RapidFuzz) to compare records that are similar but not identical.
 
-## Instalation
+## Installation
 1. Clone Repository
 
     ```bash
