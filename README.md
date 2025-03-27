@@ -15,7 +15,7 @@ This project demonstrates:
 1. Clone Repository
 
     ```bash
-    git clone https://github.com/YourUser/YourRepo.git
+    git clone https://github.com/PredescuSebastianIon/Deduplication.git
     cd deduplication_database
 2. Install Dependencies
 
